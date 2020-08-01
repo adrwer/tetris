@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     [1, width, width+1, width+2],
     [1, width+1, width+2, width*2+1],
     [width, width+1, width+2, width*2+1],
-    [1, width, width+1, width2+1]
+    [1, width, width+1, width*2+1]
   ]
 
   const oTetromino = [
@@ -44,5 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino]
 
-  console.log(squares)
+  let currentPosition = 4
+  let current = theTetrominoes[0][0]
+
+  // draw the fisrt rotation in the first tetromino
+  function draw() {
+    current.forEach(index => {
+      squares[currentPosition + index].classList.add('tetromino')
+    })
+  }
+
+  draw()
+
+  console.log()
 })
