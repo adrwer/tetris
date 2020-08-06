@@ -77,9 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  // make the tetromino move down every second
-  // timerId = setInterval(moveDown, 1000)
-
   // assign keycode to function
   function control(e) {
     if (e.keyCode === 37) {
@@ -115,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
       displayShape()
       addScore()
       gameOver()
-      console.log(random, nextRandom)
     }
   }
 
@@ -123,28 +119,21 @@ document.addEventListener('DOMContentLoaded', () => {
   function moveLeft() {
     undraw()
     const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0)
-
     if (!isAtLeftEdge) currentPosition -= 1
-
     if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
       currentPosition += 1
     }
-
     draw()
   }
 
   // move the tetromino to the right unless it is at the edge or there is a blockage
   function moveRight() {
     undraw()
-
     const isAtRightEdge = current.some(index => (currentPosition + index) % width === width - 1)
-
     if (!isAtRightEdge) currentPosition += 1
-
     if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
       currentPosition -= 1
     }
-
     draw()
   }
 
@@ -162,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // show the up-next tetromino in the mini-grid display
   const displaySquares = document.querySelectorAll(".mini-grid div")
   const displayWidth = 4
-  let displayIndex = 0
+  const displayIndex = 0
 
   // the Tetrominoes without rotations
   const upNextTetrominoes = [
@@ -226,6 +215,4 @@ document.addEventListener('DOMContentLoaded', () => {
       clearInterval(timerId)
     }
   }
-
-  console.log(random, nextRandom)
 })
